@@ -19,14 +19,22 @@ function App() {
       completed: false,
     },
   ])
-
-  console.log(todos)
-
+  // Definisikan function toggleCompleted di sini
+  const toggleCompleted = (todoId) => {
+    const updatedTodos = todos.map((todo) => {
+      if(todo.id === todoId) {
+        todo.completed = !todo.completed
+      }
+      return todo
+    })
+    setTodos(updatedTodos)
+  }
+  
   return (
     // Menambah CSS
     <div style={{ textAlign: 'center', padding: '12px' }}>
       <h1 style={{fontSize: '36px'}}>My Todo List</h1>
-      <Todos todos={todos} />
+      <Todos todos={todos} toggleCompleted={toggleCompleted} />
     </div>
   )
 }
