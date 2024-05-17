@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Todos from './components/Todos' 
+import TodoForm from './components/TodoForm'
 
 function App() {
   const [todos, setTodos] = useState([
@@ -10,7 +11,7 @@ function App() {
     },
     {
       id: 2,
-      title: 'Have lunch with Guru Domba',
+      title: 'Have lunch with Guru Domba',  
       completed: false,
     },
     {
@@ -19,7 +20,7 @@ function App() {
       completed: false,
     },
   ])
-  // Definisikan function toggleCompleted di sini
+
   const toggleCompleted = (todoId) => {
     const updatedTodos = todos.map((todo) => {
       if(todo.id === todoId) {
@@ -35,12 +36,14 @@ function App() {
     setTodos(updatedTodos);
   };
 
-
+  const addTodo = () => {
+    console.log('This is addTodo Function is ')
+  }
   
   return (
-    // Menambah CSS
     <div style={{ textAlign: 'center', padding: '12px' }}>
       <h1 style={{fontSize: '36px'}}>My Todo List</h1>
+      <TodoForm addTodo={addTodo} />
       <Todos todos={todos} toggleCompleted={toggleCompleted} deleteTodo={deleteTodo}/>
     </div>
   )
