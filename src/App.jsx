@@ -29,12 +29,19 @@ function App() {
     })
     setTodos(updatedTodos)
   }
+
+  const deleteTodo = (id) => {
+    const updatedTodos = todos.filter(todo => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
+
   
   return (
     // Menambah CSS
     <div style={{ textAlign: 'center', padding: '12px' }}>
       <h1 style={{fontSize: '36px'}}>My Todo List</h1>
-      <Todos todos={todos} toggleCompleted={toggleCompleted} />
+      <Todos todos={todos} toggleCompleted={toggleCompleted} deleteTodo={deleteTodo}/>
     </div>
   )
 }
